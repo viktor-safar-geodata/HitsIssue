@@ -1,0 +1,30 @@
+﻿<Window
+    x:Class="ArcGIS.Net.FeatureCollectionLayer.HitsIssue.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013"
+    xmlns:local="clr-namespace:ArcGIS.Net.FeatureCollectionLayer.HitsIssue"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <local:MapViewModel x:Key="MapViewModel" />
+    </Window.Resources>
+    <Grid>
+        <esri:MapView
+            x:Name="TheMapView"
+            esri:GeoViewController.GeoViewController="{Binding Controller, Source={StaticResource MapViewModel}}"
+            GeoViewTapped="TheMapView_GeoViewTapped"
+            Map="{Binding Map, Source={StaticResource MapViewModel}}">
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="GeoViewTapped">
+                    <behaviors:InvokeCommandAction Command="{Binding GeoViewTappedCommand, Source={StaticResource MapViewModel}}" PassEventArgsToCommand="True" />
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
+        </esri:MapView>
+    </Grid>
+</Window>
