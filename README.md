@@ -1,4 +1,4 @@
-A PoC illustrating a bug in `GeoViewController.IdentifyLayersAsync()` of `FeatureCollectionLayer`
+A PoC illustrating a bug in `GeoViewController.IdentifyLayersAsync()` for `FeatureCollectionLayer`
 
 Setup:
 - Esri.ArcGISRuntime.WPF 200.6
